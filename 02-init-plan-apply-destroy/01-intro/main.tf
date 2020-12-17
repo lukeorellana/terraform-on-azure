@@ -1,5 +1,7 @@
+#Azure provider
 provider "azurerm" {
-  version = "1.38.0"
+  version = "=2.40.0"
+  features {}
 }
 
 #create resource group
@@ -7,7 +9,7 @@ resource "azurerm_resource_group" "rg" {
     name     = "rg-terraexample"
     location = "westus2"
     tags      = {
-      Environment = terraexample
+      Environment = "terraexample"
     }
 }
 
@@ -21,8 +23,8 @@ resource "azurerm_virtual_network" "vnet" {
 
 # Create subnet
 resource "azurerm_subnet" "subnet" {
-  name                 = "snet-dev-westus2-001 "
+  name                 = "snet-dev-westus2-001"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
-  address_prefix       = "10.0.0.0/24"
+  address_prefixes       = ["10.0.0.0/24"]
 }

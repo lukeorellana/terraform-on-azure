@@ -1,3 +1,9 @@
+#Azure provider
+provider "azurerm" {
+  version = "=2.40.0"
+  features {}
+}
+
 resource "azurerm_resource_group" "rg" {
   name     = "rg-MyFirstTerraform"
   location = "westus"

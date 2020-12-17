@@ -1,3 +1,9 @@
+#Azure provider
+provider "azurerm" {
+  version = "=2.40.0"
+  features {}
+}
+
 data "terraform_remote_state" "terraformdemo" {
   backend = "remote"
   config = {
@@ -15,7 +21,7 @@ resource "azurerm_virtual_network" "vnet" {
     location            = data.terraform_remote_state.terraformdemo.outputs.rg.location
     resource_group_name = data.terraform_remote_state.terraformdemo.outputs.rg.name
 }
-The same concepts apply for an Azure Storage Account backend type. To access the backend of our Azure Storage Account, we follow the same format but reference the azurerm backend type with it's required arguments:
+# The same concepts apply for an Azure Storage Account backend type. To access the backend of our Azure Storage Account, we follow the same format but reference the azurerm backend type with it's required arguments:
 
 data "terraform_remote_state" "terraformdemo" {
   backend = "azurerm"

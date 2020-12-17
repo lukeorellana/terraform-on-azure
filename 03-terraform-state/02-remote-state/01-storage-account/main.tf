@@ -1,5 +1,7 @@
+#Azure provider
 provider "azurerm" {
-  version = "1.38.0"
+  version = "=2.40.0"
+  features {}
 }
 
 #create resource group
@@ -7,7 +9,7 @@ resource "azurerm_resource_group" "rg" {
     name     = "rg-terraexample"
     location = "westus2"
     tags      = {
-      Environment = terraexample
+      Environment = "terraexample"
     }
 }
 

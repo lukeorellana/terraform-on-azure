@@ -1,5 +1,7 @@
+#Azure provider
 provider "azurerm" {
-  version = "1.38.0"
+  version = "=2.40.0"
+  features {}
 }
 
 #Collect powershell script and input variables
@@ -32,7 +34,7 @@ resource "azurerm_subnet" "subnet" {
   name                 = "snet-dev-${var.location}-001 "
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
-  address_prefix       = "10.0.0.0/24"
+  address_prefixes       = ["10.0.0.0/24"]
 }
 
 # Create public IP

@@ -1,5 +1,7 @@
+#Azure provider
 provider "azurerm" {
-  version = "1.38.0"
+  version = "=2.40.0"
+  features {}
 }
 
 #create resource group
