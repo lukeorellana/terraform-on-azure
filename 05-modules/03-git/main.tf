@@ -11,7 +11,6 @@ resource "azurerm_resource_group" "rg" {
 }
 
 #Git Azure DevOps
-#Create Storage Account
 module "storage_account" {
   source    = "git::https://allanore@dev.azure.com/allanore/TerraformModulesExample/_git/TerraformModulesExample?ref=v0.1"
 
@@ -20,8 +19,7 @@ module "storage_account" {
   location  = azurerm_resource_group.rg.location
 }
 
-#Git SSH Azure DevOps
-#Create Storage Account
+#GitHub
 module "storage_account" {
   source    = "github.com/allanore/TerraformModulesExample"
 
@@ -30,4 +28,12 @@ module "storage_account" {
   location  = azurerm_resource_group.rg.location
 }
 
-#Github
+#Terraform registry
+module "function-app" {
+  source  = "InnovationNorway/function-app/azurerm"
+  version = "0.1.2"
+
+  function_app_name = "func-terrademo"
+  resource_group_name = azurerm_resource_group.rg.name
+  location = azurerm_resource_group.rg.location
+}
